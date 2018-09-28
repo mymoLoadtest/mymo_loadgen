@@ -1,0 +1,158 @@
+-
+      description: 'Authentication[inquiry-user-salt]'
+      request:
+            method: POST
+            url: /authentication/inquiry-user-salt
+            post: >
+                  {"transaction_code":"(.*)","transaction_reference_code":"(.*)","transaction_date":"(.*)","transaction_time":"(.*)","posted_date":"(.*)","user_id":"(.*)"}
+         
+      response:
+            status: 200
+            headers:
+                  content-type: application/json
+            body: >
+                  {"user_id": "<%post.6%>",
+                  "transaction_code": "NH500012",
+                  "transaction_reference_code": "H01171220102607622",
+                  "transaction_date": "20160106",
+                  "transaction_time": "102607",
+                  "posted_date": "20160106",
+                  "response_result": "0",
+                  "length_of_detail": "28",
+                  "user_salt": "14221530201712201024424229"}
+
+-
+      description: 'Authentication[verify-credential]'
+      request:
+            method: POST
+            url: /authentication/verify-credential
+            headers:
+                  content-type: application/json
+            post: >
+                  {"transaction_code":"(.*)","transaction_reference_code":"(.*)","transaction_date":"(.*)","transaction_time":"(.*)","posted_date":"(.*)","terminal_id":"(.*)","user_id":"(.*)","password":"(.*)","branch_code":"(.*)"}
+
+      response:
+            status: 200
+            headers:
+                  content-type: application/json
+            body: >
+                  {"transaction_code": "<%post.1%>",
+                  "transaction_reference_code": "<%post.2%>",
+                  "transaction_date": "<%post.3%>",
+                  "transaction_time": "<%post.4%>",
+                  "posted_date": "<%post.5%>",
+                  "response_result": "0",
+                  "length_of_detail": 70,
+                  "terminal_id": "<%post.6%>",
+                  "branch_code": "<%post.9%>",
+                  "user_id": "<%post.7%>",
+                  "password": "<%post.8%>",
+                  "token": "<%post.4%><%post.2%><%post.3%>",
+                  "user_name": "datab",
+                  "branch_name": "สำนักพหลโยธิน"
+                  }
+
+-
+      description: 'Deposit[validate-transaction]'
+      request:
+            method: POST
+            url: /deposit/validate-transaction
+      response:
+            status: 200
+            headers:
+                  content-type: application/json
+            file: /response-data/validate-transaction.json
+-
+      description: 'Deposit[process-transaction]'
+      request:
+            method: POST
+            url: /deposit/process-transaction
+      response:
+            status: 200
+            headers:
+                  content-type: application/json
+            file: /response-data/process-transaction.json
+-
+      description: 'Search Customer[inquiry-customer-details]'
+      request:
+            method: POST
+            url: /customer/inquiry-customer-details
+      response:
+            status: 200
+            headers:
+                  content-type: application/json
+            file: /response-data/inquiry-customer-details.json
+-
+      description: 'Authentication[Logout]'
+      request:
+            method: POST
+            url: /authentication/verify-logoff
+            headers:
+                  content-type: application/json
+            post: >
+                  {"transaction_code":"(.*)","transaction_reference_code":"(.*)","transaction_date":"(.*)","transaction_time":"(.*)","posted_date":"(.*)","terminal_id":"(.*)","user_id":"(.*)","branch_code":"(.*)","token":"(.*)"}
+
+      response:
+            status: 200
+            headers:
+                  content-type: application/json
+            body: >
+                  {
+                  "transaction_code": "<%post.1%>",
+                  "transaction_reference_code": "<%post.2%>",
+                  "transaction_date": "<%post.3%>",
+                  "transaction_time": "<%post.4%>",
+                  "posted_date": "<%post.5%>",
+                  "response_result": "0",
+                  "length_of_detail": 18,
+                  "terminal_id": "<%post.6%>",
+                  "branch_code": "<%post.8%>",
+                  "user_id": "<%post.7%>",
+                  "token": "<%post.9%>"
+                  }
+
+-
+      description: SMS
+      request:
+            method: POST
+            url: /ESBUtilsService
+      response:
+            status: 200
+            headers:
+                  content-type: application/xml
+            file: /response-data/ESB.xml
+-
+      description: Account[inquiry-deposit-account]
+      request:
+            method: POST
+            url: /account/inquiry-deposit-account
+            headers: 
+                  content-type: application/json 
+            post:  >
+                  {"transaction_code":"(.*)","transaction_reference_code":"(.*)","transaction_date":"(.*)","transaction_time":"(.*)","posted_date":"(.*)","account_number":"(.*)","passbook_number":"(.*)","method_type":(.*),"terminal_id":"(.*)","branch_code":"(.*)","user_id":"(.*)"}
+      response:
+            status: 200
+            headers:
+                  content-type: application/json
+            body: >
+                  {
+                  "transaction_code": "<%post.1%>",
+                  "transaction_reference_code": "<%post.2%>",
+                  "transaction_date": "<%post.3%>",
+                  "transaction_time": "<%post.4%>",
+                  "posted_date": "<%post.5%>",
+                  "response_result": "0",
+                  "length_of_detail": 82,
+                  "cif_number": "5",
+                  "mobile_number": "0898765432",
+                  "account_number": "<%post.6%>",
+                  "account_name": "กอล์ฟ มายโม And",
+                  "account_class": "D",
+                  "account_group": "SAV",
+                  "account_type": 2001,
+                  "account_type_description": "บัญชีเงินฝากเผื่อเรียก",
+                  "account_status": 0,
+                  "account_status_description": "Active",
+                  "ledger_balance": 3051,
+                  "available_balance": 3051
+                  }

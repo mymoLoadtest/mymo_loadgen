@@ -1,0 +1,38 @@
+-
+      description: 'push[register]'
+      request:
+            method: POST
+            url: /push/register
+            post: >
+                  {"request_id":"(.*)","user_id":"(.*)","application_id":"(.*)","push_provider_code":"(.*)","token":"(.*)"}
+
+      response:
+            status: 200
+            latency: 50
+            headers:
+                  content-type: application/json
+            body: >
+                  {"status":"0",
+                  "request_id":"<%post.1%>",
+                  "response_id":"54-2018222161227412"}
+
+-
+      description: 'pushfcm'
+      request:
+            method: POST
+            url: /push/fcm
+            post: >
+                  {"request_id":"(.*)","user_id":"(.*)","application_id":"(.*)","interface_type":"(.*)","message_type":"(.*)","push_message":{"body_message":"(.*)","data":{(.*)}}}
+
+      response:
+            status: 200
+            latency: 50
+            headers:
+                  content-type: application/json
+            body: >
+                  {
+                    "status":"0",
+                    "request_id":"<%post.1%>",
+                    "response_id":"68-201892510942140"
+                  }
+   

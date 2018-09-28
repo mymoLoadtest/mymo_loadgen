@@ -1,0 +1,37 @@
+-
+      description: 'prePost'
+      request:
+            method: POST
+            url: /MyMoWS-cbsprod/services/rest/mobile/post/pretransfer
+            post: >
+                  {"amount":"(.*)","discountFee":"(.*)","postedDate":"(.*)","transactionRefCode":"(.*)","transactionTime":"(.*)","isInterRegionFee":"(.*)","accountFrom":"(.*)","transactionFee":"(.*)","accountTo":"(.*)","transactionDate":"(.*)","mobileNo":"(.*)","smsFee":"(.*)"}
+
+      response:
+            status: 200
+            latency: 50
+            headers:
+                  content-type: application/json
+            body: >
+                  {"errorCode":null,
+                  "errorMessage":null,
+                  "success":true,
+                  "output":{
+                    "endBalance":"",
+                    "fromAccountNo":"<%post.7%>",
+                    "transRefId":"",
+                    "intraBankFlg":"0",
+                    "fromAccountName":"นาย โม กลาง กอน",
+                    "totAmount":"10",
+                    "toAccountNo":"20000000909",
+                    "transTime":"184036",
+                    "amount":"10.00",
+                    "transRefCode":"<%post.4%>",
+                    "toAccountName":"(ยกเลิก)โม กลาง กอน For Children",
+                    "smsFee":"0",
+                    "postDate":"<%post.3%>",
+                    "interRegion":"0",
+                    "transCode":"MB110001",
+                    "transDate":"<%post.3%>",
+                    "txnFee":"0"
+                    }
+                  }

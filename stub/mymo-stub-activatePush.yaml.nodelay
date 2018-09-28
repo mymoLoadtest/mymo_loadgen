@@ -1,0 +1,16 @@
+-
+      description: 'push[register]'
+      request:
+            method: POST
+            url: /push/register
+            post: >
+                  {"request_id":"(.*)","user_id":"(.*)","application_id":"(.*)","push_provider_code":"(.*)","token":"(.*)"}
+
+      response:
+            status: 200
+            headers:
+                  content-type: application/json
+            body: >
+                  {"status":"0",
+                  "request_id":"<%post.1%>",
+                  "response_id":"54-2018222161227412"}

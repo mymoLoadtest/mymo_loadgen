@@ -1,0 +1,205 @@
+-
+      description: 'getWidget[accountlist]'
+      request:
+            method: POST
+            url: /MyMoWS-cbsprod/services/rest/mobile/get/accountlist/
+            post: >
+                  {"postedDate":"(.*)","transactionRefCode":"(.*)","lastAccountNo":"(.*)","transactionTime":"(.*)","cif":"(.*)","numberOfRecord":"(.*)","transactionDate":"(.*)","accountClass":"(.*)"}
+
+      response:
+            status: 200
+            latency: 50
+            headers:
+                  content-type: application/json
+            body: >
+                  {"errorCode":null,
+                  "errorMessage":null,
+                  "success":true,
+                  "output":{"transTime":"<%post.4%>",
+                  "transCode":"MB010002",
+                  "transDate":"<%post.1%>",
+                  "lastAccountNo":"20228393300",
+                  "transRefCode":"<%post.2%>",
+                  "acnList":{"1":{"singleAccountFlag":true,
+                  "accountGroup":"SAV",
+                  "availableBal":"13.69",
+                  "ledgerBal":"13.69",
+                  "primaryAccountFlag":true,
+                  "accountType":"2001",
+                  "monthlyWithdrawCount":null,
+                  "accountTitle":"test test",
+                  "accountClass":"D",
+                  "accountSubType":null,
+                  "accountNo":"20059032266"},
+                  "2":{"singleAccountFlag":true,
+                  "accountGroup":"SAV",
+                  "availableBal":"80.41",
+                  "ledgerBal":"80.41",
+                  "primaryAccountFlag":true,
+                  "accountType":"2001",
+                  "monthlyWithdrawCount":null,
+                  "accountTitle":"test test",
+                  "accountClass":"D",
+                  "accountSubType":null,
+                  "accountNo":"20228393300"}},
+                  "hasMoreAccount":"0",
+                  "postDate":"<%post.1%>"}}
+
+-
+      description: 'post'
+      request:
+            method: POST
+            url: /MyMoWS-cbsprod/services/rest/mobile/post/transfer/
+            post: >
+                  {"amount":"(.*)","discountFee":"(.*)","postedDate":"(.*)","transactionRefCode":"(.*)","transactionTime":"(.*)","isInterRegionFee":"(.*)","accountFrom":"(.*)","transactionFee":"(.*)","accountTo":"(.*)","transactionDate":"(.*)","mobileNo":"(.*)","smsFee":"(.*)"}
+      response:
+            status: 200
+            latency: 50
+            headers:
+                  content-type: application/json
+            body: >
+                  {"errorCode":null,
+                  "errorMessage":null,
+                  "success":true,
+                  "output":{
+                    "endBalance":"43943717.89",
+                    "fromAccountNo":"<%post.7%>",
+                    "transRefId":"2018001",
+                    "intraBankFlg":"0",
+                    "fromAccountName":"นาย โม กลาง กอน",
+                    "totAmount":"50",
+                    "toAccountNo":"<%post.9%>",
+                    "transTime":"<%post.5%>",
+                    "amount":"<%post.1%>",
+                    "transRefCode":"<%post.4%>",
+                    "toAccountName":"(ยกเลิก)โม กลาง กอน For Children",
+                    "smsFee":"0",
+                    "postDate":"<%post.3%>",
+                    "interRegion":"0",
+                    "transCode":"MB100001",
+                    "transDate":"<%post.3%>",
+                    "txnFee":"0"
+                    }
+                  }
+-
+      description: 'prePost'
+      request:
+            method: POST
+            url: /MyMoWS-cbsprod/services/rest/mobile/post/pretransfer/
+            post: >
+                  {"amount":"(.*)","discountFee":"(.*)","postedDate":"(.*)","transactionRefCode":"(.*)","transactionTime":"(.*)","isInterRegionFee":"(.*)","accountFrom":"(.*)","transactionFee":"(.*)","accountTo":"(.*)","transactionDate":"(.*)","mobileNo":"(.*)","smsFee":"(.*)"}
+
+      response:
+            status: 200
+            latency: 50
+            headers:
+                  content-type: application/json
+            body: >
+                  {"errorCode":null,
+                  "errorMessage":null,
+                  "success":true,
+                  "output":{
+                    "endBalance":"",
+                    "fromAccountNo":"<%post.7%>",
+                    "transRefId":"",
+                    "intraBankFlg":"0",
+                    "fromAccountName":"นาย โม กลาง กอน",
+                    "totAmount":"10",
+                    "toAccountNo":"<%post.9%>",
+                    "transTime":"184036",
+                    "amount":"10.00",
+                    "transRefCode":"<%post.4%>",
+                    "toAccountName":"(ยกเลิก)โม กลาง กอน For Children",
+                    "smsFee":"0",
+                    "postDate":"<%post.3%>",
+                    "interRegion":"0",
+                    "transCode":"MB110001",
+                    "transDate":"<%post.3%>",
+                    "txnFee":"0"
+                    }
+                  }
+-
+      description: 'checkLoanPayable'
+      request:
+            method: POST
+            url: /MyMoWS-cbsprod/services/rest/mobile/get/checkloanpayable/
+            post: >
+                  {"postedDate":"(.*)","transactionRefCode":"(.*)","transactionTime":"(.*)","accountNo":"(.*)","transactionDate":"(.*)"}
+
+      response:
+            status: 200
+            latency: 50
+            headers:
+                  content-type: application/json
+            body: >
+                  {"errorCode":null,
+                  "errorMessage":null,
+                  "success":true,
+                  "output":{
+                        "transTime":"<%post.3%>",
+                        "transCode":"MB010072",
+                        "transDate":"<%post.1%>",
+                        "transRefCode":"<%post.2%>",
+                        "accountClass":"D",
+                        "accountNo":"<%post.4%>",
+                        "payableFlag":"1",
+                        "postDate":"<%post.1%>"
+                        }
+                  }
+-
+      description: 'preBill'
+      request:
+            method: POST
+            url: /MyMoWS-cbsprod/services/rest/mobile/get/digitalpsclist/
+            post: >
+                  {"postedDate":"(.*)","transactionRefCode":"(.*)","transactionTime":"(.*)","cif":"(.*)","numberOfRecord":"(.*)","accountNo":"(.*)","transactionDate":"(.*)","lastCertRecordNo":"(.*)"}
+                  
+      response:
+            status: 200
+            latency: 50
+            headers:
+                  content-type: application/json
+            body: >
+                  {"errorCode":null,
+                  "errorMessage":null,
+                  "success":true,
+                  "output":{
+                    "remainPrize":"0",
+                    "accountType":"3403",
+                    "lastSeqNo":"37",
+                    "amountOfActivePSC":"19",
+                    "hasMoreSeq":"0",
+                    "availableBalance":"214000",
+                    "transTime":"<%post.3%>",
+                    "accountNumber":"<%post.6%>",
+                    "transRefCode":"<%post.2%>",
+                    "seqList":{
+                      "11":{"maxPrizeCount":"35","unit":"40","certPeriod":"1","prizeFreq":"1MA16","highNumber":"15379","nextPrizeDate":"20160116","startDate":"20151021","intPerUnit":"2.75","salakTerm":"3Y","certCardNo":"47","prizeSumList":",,,,,,,,,,,","certBalance":"2000","pricePerUnit":"50","salakStatus":"0","prizeCountList":",,,,,,,,,,,","withdrawalStartDate":"20151021","certGroup":"ก","remainingPrize":"0","promotionType":null,"prizeCount":null,"lowNumber":"15340","prizeStartDate":"20151121","certId":"1772743","maturityDate":"20181021"},
+                      "12":{"maxPrizeCount":"35","unit":"40","certPeriod":"1","prizeFreq":"1MA16","highNumber":"16059","nextPrizeDate":"20160116","startDate":"20151021","intPerUnit":"2.75","salakTerm":"3Y","certCardNo":"46","prizeSumList":",,,,,,,,,,,","certBalance":"2000","pricePerUnit":"50","salakStatus":"0","prizeCountList":",,,,,,,,,,,","withdrawalStartDate":"20151021","certGroup":"ก","remainingPrize":"0","promotionType":null,"prizeCount":null,"lowNumber":"16020","prizeStartDate":"20151121","certId":"9731689","maturityDate":"20181021"},
+                      "13":{"maxPrizeCount":"35","unit":"40","certPeriod":"1","prizeFreq":"1MA16","highNumber":"16099","nextPrizeDate":"20160116","startDate":"20151021","intPerUnit":"2.75","salakTerm":"3Y","certCardNo":"45","prizeSumList":",,,,,,,,,,,","certBalance":"2000","pricePerUnit":"50","salakStatus":"0","prizeCountList":",,,,,,,,,,,","withdrawalStartDate":"20151021","certGroup":"ก","remainingPrize":"0","promotionType":null,"prizeCount":null,"lowNumber":"16060","prizeStartDate":"20151121","certId":"5291485","maturityDate":"20181021"},
+                      "14":{"maxPrizeCount":"35","unit":"40","certPeriod":"1","prizeFreq":"1MA16","highNumber":"16679","nextPrizeDate":"20160116","startDate":"20151021","intPerUnit":"2.75","salakTerm":"3Y","certCardNo":"44","prizeSumList":",,,,,,,,,,,","certBalance":"2000","pricePerUnit":"50","salakStatus":"0","prizeCountList":",,,,,,,,,,,","withdrawalStartDate":"20151021","certGroup":"ก","remainingPrize":"0","promotionType":null,"prizeCount":null,"lowNumber":"16640","prizeStartDate":"20151121","certId":"7551354","maturityDate":"20181021"},
+                      "15":{"maxPrizeCount":"35","unit":"100","certPeriod":"1","prizeFreq":"1MA16","highNumber":"26339","nextPrizeDate":"20160116","startDate":"20151022","intPerUnit":"2.75","salakTerm":"3Y","certCardNo":"43","prizeSumList":",,,,,,,,,,,","certBalance":"5000","pricePerUnit":"50","salakStatus":"0","prizeCountList":",,,,,,,,,,,","withdrawalStartDate":"20151022","certGroup":"ก","remainingPrize":"0","promotionType":null,"prizeCount":null,"lowNumber":"26240","prizeStartDate":"20151122","certId":"8044201","maturityDate":"20181022"},
+                      "16":{"maxPrizeCount":"35","unit":"40","certPeriod":"1","prizeFreq":"1MA16","highNumber":"26239","nextPrizeDate":"20160116","startDate":"20151022","intPerUnit":"2.75","salakTerm":"3Y","certCardNo":"42","prizeSumList":",,,,,,,,,,,","certBalance":"2000","pricePerUnit":"50","salakStatus":"0","prizeCountList":",,,,,,,,,,,","withdrawalStartDate":"20151022","certGroup":"ก","remainingPrize":"0","promotionType":null,"prizeCount":null,"lowNumber":"26200","prizeStartDate":"20151122","certId":"2812530","maturityDate":"20181022"},
+                      "17":{"maxPrizeCount":"35","unit":"20","certPeriod":"1","prizeFreq":"1MA16","highNumber":"2175284","nextPrizeDate":"20160116","startDate":"20151024","intPerUnit":"2.75","salakTerm":"3Y","certCardNo":"40","prizeSumList":",,,,,,,,,,,","certBalance":"1000","pricePerUnit":"50","salakStatus":"0","prizeCountList":",,,,,,,,,,,","withdrawalStartDate":"20151024","certGroup":"ข","remainingPrize":"0","promotionType":null,"prizeCount":null,"lowNumber":"2175265","prizeStartDate":"20151124","certId":"9581474","maturityDate":"20181024"},
+                      "18":{"maxPrizeCount":"35","unit":"100","certPeriod":"1","prizeFreq":"1MA16","highNumber":"2105749","nextPrizeDate":"20160116","startDate":"20151024","intPerUnit":"2.75","salakTerm":"3Y","certCardNo":"39","prizeSumList":",,,,,,,,,,,","certBalance":"5000","pricePerUnit":"50","salakStatus":"0","prizeCountList":",,,,,,,,,,,","withdrawalStartDate":"20151024","certGroup":"ข","remainingPrize":"0","promotionType":null,"prizeCount":null,"lowNumber":"2105650","prizeStartDate":"20151124","certId":"6359826","maturityDate":"20181024"},
+                      "19":{"maxPrizeCount":"35","unit":"1000","certPeriod":"1","prizeFreq":"1MA16","highNumber":"99579","nextPrizeDate":"20160116","startDate":"20151024","intPerUnit":"2.75","salakTerm":"3Y","certCardNo":"37","prizeSumList":",,,,,,,,,,,","certBalance":"50000","pricePerUnit":"50","salakStatus":"0","prizeCountList":",,,,,,,,,,,","withdrawalStartDate":"20151024","certGroup":"ก","remainingPrize":"0","promotionType":null,"prizeCount":null,"lowNumber":"98580","prizeStartDate":"20151124","certId":"1376215","maturityDate":"20181024"},
+                      "1":{"maxPrizeCount":"36","unit":"2000","certPeriod":"3","prizeFreq":"1MA16","highNumber":"1220042","nextPrizeDate":"20160116","startDate":"20151122","intPerUnit":"10","salakTerm":"3Y","certCardNo":"62","prizeSumList":",,,,,,,,,,,","certBalance":"100000","pricePerUnit":"50","salakStatus":"0","prizeCountList":",,,,,,,,,,,","withdrawalStartDate":"20151122","certGroup":"ค","remainingPrize":"0","promotionType":null,"prizeCount":null,"lowNumber":"1218043","prizeStartDate":"20151222","certId":"9859943","maturityDate":"20181122"},
+                      "2":{"maxPrizeCount":"36","unit":"20","certPeriod":"3","prizeFreq":"1MA16","highNumber":"1205342","nextPrizeDate":"20160116","startDate":"20151121","intPerUnit":"10","salakTerm":"3Y","certCardNo":"61","prizeSumList":",,,,,,,,,,,","certBalance":"1000","pricePerUnit":"50","salakStatus":"0","prizeCountList":",,,,,,,,,,,","withdrawalStartDate":"20151121","certGroup":"ค","remainingPrize":"0","promotionType":null,"prizeCount":null,"lowNumber":"1205323","prizeStartDate":"20151221","certId":"3144398","maturityDate":"20181121"},
+                      "3":{"maxPrizeCount":"36","unit":"100","certPeriod":"3","prizeFreq":"1MA16","highNumber":"781834","nextPrizeDate":"20160116","startDate":"20151025","intPerUnit":"10","salakTerm":"3Y","certCardNo":"60","prizeSumList":",,,,,,,,,,,","certBalance":"5000","pricePerUnit":"50","salakStatus":"0","prizeCountList":",,,,,,,,,,,","withdrawalStartDate":"20151025","certGroup":"ค","remainingPrize":"0","promotionType":null,"prizeCount":null,"lowNumber":"781735","prizeStartDate":"20151125","certId":"8840811","maturityDate":"20181025"},
+                      "4":{"maxPrizeCount":"36","unit":"20","certPeriod":"3","prizeFreq":"1MA16","highNumber":"781734","nextPrizeDate":"20160116","startDate":"20151025","intPerUnit":"10","salakTerm":"3Y","certCardNo":"59","prizeSumList":",,,,,,,,,,,","certBalance":"1000","pricePerUnit":"50","salakStatus":"0","prizeCountList":",,,,,,,,,,,","withdrawalStartDate":"20151025","certGroup":"ค","remainingPrize":"0","promotionType":null,"prizeCount":null,"lowNumber":"781715","prizeStartDate":"20151125","certId":"4886877","maturityDate":"20181025"},
+                      "5":{"maxPrizeCount":"36","unit":"20","certPeriod":"3","prizeFreq":"1MA16","highNumber":"660102","nextPrizeDate":"20160116","startDate":"20151025","intPerUnit":"10","salakTerm":"3Y","certCardNo":"58","prizeSumList":",,,,,,,,,,,","certBalance":"1000","pricePerUnit":"50","salakStatus":"0","prizeCountList":",,,,,,,,,,,","withdrawalStartDate":"20151025","certGroup":"ค","remainingPrize":"0","promotionType":null,"prizeCount":null,"lowNumber":"660083","prizeStartDate":"20151125","certId":"1331285","maturityDate":"20181025"},
+                      "6":{"maxPrizeCount":"35","unit":"200","certPeriod":"1","prizeFreq":"1MA16","highNumber":"32179","nextPrizeDate":"20160116","startDate":"20151022","intPerUnit":"2.75","salakTerm":"3Y","certCardNo":"57","prizeSumList":",,,,,,,,,,,","certBalance":"10000","pricePerUnit":"50","salakStatus":"0","prizeCountList":",,,,,,,,,,,","withdrawalStartDate":"20151022","certGroup":"ก","remainingPrize":"0","promotionType":null,"prizeCount":null,"lowNumber":"31980","prizeStartDate":"20151122","certId":"8229063","maturityDate":"20181022"},
+                      "7":{"maxPrizeCount":"36","unit":"100","certPeriod":"3","prizeFreq":"1MA16","highNumber":"594944","nextPrizeDate":"20160116","startDate":"20151025","intPerUnit":"10","salakTerm":"3Y","certCardNo":"56","prizeSumList":",,,,,,,,,,,","certBalance":"5000","pricePerUnit":"50","salakStatus":"0","prizeCountList":",,,,,,,,,,,","withdrawalStartDate":"20151025","certGroup":"ค","remainingPrize":"0","promotionType":null,"prizeCount":null,"lowNumber":"594845","prizeStartDate":"20151125","certId":"8509819","maturityDate":"20181025"},
+                      "8":{"maxPrizeCount":"35","unit":"200","certPeriod":"1","prizeFreq":"1MA16","highNumber":"2204000","nextPrizeDate":"20160116","startDate":"20151024","intPerUnit":"2.75","salakTerm":"3Y","certCardNo":"55","prizeSumList":",,,,,,,,,,,","certBalance":"10000","pricePerUnit":"50","salakStatus":"0","prizeCountList":",,,,,,,,,,,","withdrawalStartDate":"20151024","certGroup":"ข","remainingPrize":"0","promotionType":"DSDP16A","prizeCount":null,"lowNumber":"2203801","prizeStartDate":"20151124","certId":"5951609","maturityDate":"20181024"},
+                      "9":{"maxPrizeCount":"35","unit":"100","certPeriod":"1","prizeFreq":"1MA16","highNumber":"13719","nextPrizeDate":"20160116","startDate":"20151021","intPerUnit":"2.75","salakTerm":"3Y","certCardNo":"53","prizeSumList":",,,,,,,,,,,","certBalance":"5000","pricePerUnit":"50","salakStatus":"0","prizeCountList":",,,,,,,,,,,","withdrawalStartDate":"20151021","certGroup":"ก","remainingPrize":"0","promotionType":null,"prizeCount":null,"lowNumber":"13620","prizeStartDate":"20151121","certId":"5796312","maturityDate":"20181021"},
+                      "10":{"maxPrizeCount":"35","unit":"100","certPeriod":"1","prizeFreq":"1MA16","highNumber":"2202100","nextPrizeDate":"20160116","startDate":"20151024","intPerUnit":"2.75","salakTerm":"3Y","certCardNo":"52","prizeSumList":",,,,,,,,,,,","certBalance":"5000","pricePerUnit":"50","salakStatus":"0","prizeCountList":",,,,,,,,,,,","withdrawalStartDate":"20151024","certGroup":"ข","remainingPrize":"0","promotionType":null,"prizeCount":null,"lowNumber":"2202001","prizeStartDate":"20151124","certId":"8845774","maturityDate":"20181024"}
+                      },
+                    "accountTitle":"นาย โม กลาง กอน",
+                    "postDate":"<%post.1%>",
+                    "ledgerBalance":"214000",
+                    "transCode":"MB010062",
+                    "lastTransactionDate":"<%post.7%>",
+                    "transDate":"<%post.7%>",
+                    "accountTypeDesc":"สลากออมสินดิจิทัล",
+                    "accountStatus":"0"}
+                    }

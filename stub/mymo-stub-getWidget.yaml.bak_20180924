@@ -1,0 +1,47 @@
+-
+      description: 'getWidget[accountlist]'
+      request:
+            method: POST
+            url: /MyMoWS-cbsprod/services/rest/mobile/get/accountlist/
+            post: >
+                  {"postedDate":"(.*)","transactionRefCode":"(.*)","lastAccountNo":"(.*)","transactionTime":"(.*)","cif":"(.*)","numberOfRecord":"(.*)","transactionDate":"(.*)","accountClass":"(.*)"}
+
+      response:
+            status: 200
+            latency: 50
+            headers:
+                  content-type: application/json
+            body: >
+                  {"errorCode":null,
+                  "errorMessage":null,
+                  "success":true,
+                  "output":{"transTime":"<%post.4%>",
+                  "transCode":"MB010002",
+                  "transDate":"<%post.1%>",
+                  "lastAccountNo":"20228393300",
+                  "transRefCode":"<%post.2%>",
+                  "acnList":{"1":{"singleAccountFlag":true,
+                  "accountGroup":"SAV",
+                  "availableBal":"13.69",
+                  "ledgerBal":"13.69",
+                  "primaryAccountFlag":true,
+                  "accountType":"2001",
+                  "monthlyWithdrawCount":null,
+                  "accountTitle":"test test",
+                  "accountClass":"D",
+                  "accountSubType":null,
+                  "accountNo":"20059032266"},
+                  "2":{"singleAccountFlag":true,
+                  "accountGroup":"SAV",
+                  "availableBal":"80.41",
+                  "ledgerBal":"80.41",
+                  "primaryAccountFlag":true,
+                  "accountType":"2001",
+                  "monthlyWithdrawCount":null,
+                  "accountTitle":"test test",
+                  "accountClass":"D",
+                  "accountSubType":null,
+                  "accountNo":"20228393300"}},
+                  "hasMoreAccount":"0",
+                  "postDate":"<%post.1%>"}}
+
